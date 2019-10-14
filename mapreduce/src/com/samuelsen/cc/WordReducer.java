@@ -6,7 +6,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 
-public class WordReducer extends Reducer<Text, IntWritable,Text,IntWritable> {
+public class WordReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 
     private IntWritable result = new IntWritable();
 
@@ -14,9 +14,7 @@ public class WordReducer extends Reducer<Text, IntWritable,Text,IntWritable> {
             throws IOException, InterruptedException {
 
         int sum = 0;
-        for (IntWritable val : values) {
-            sum += val.get();
-        }
+        for (IntWritable val : values) sum += val.get();
 
         result.set(sum);
         context.write(key, result);
