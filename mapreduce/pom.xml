@@ -6,7 +6,7 @@
 
     <groupId>com.samuelsen.cc</groupId>
     <artifactId>cc-project</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <name>cc-project</name>
 
@@ -41,12 +41,6 @@
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-bundle -->
         <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk</artifactId>
-            <version>1.11.651</version>
-        </dependency>
-
 
     </dependencies>
 

@@ -11,8 +11,7 @@ import java.util.StringTokenizer;
 
 public class WordMapper extends Mapper<Object, Text, Text, IntWritable> {
 
-    private final Map<String, Integer> wordMap = new HashMap<>();
-
+    private final Map<String, Integer> wordMap = new HashMap<>();  // store intermediate result here in-memory
 
     public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 
@@ -31,8 +30,8 @@ public class WordMapper extends Mapper<Object, Text, Text, IntWritable> {
         wordMap.forEach((key, value) -> write(key, value, context));
     }
 
+    // Helper method for cleaner forEach mehtod.
     private static void write(String key, Integer value, Context context)  {
-        System.out.println("Key: " + key + ", value: " + value);
         try {
             context.write(new Text(key), new IntWritable(value));
         } catch (IOException | InterruptedException e) {
