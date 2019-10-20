@@ -11,6 +11,9 @@ import java.io.IOException;
 
 public class WordKey implements WritableComparable<WordKey> {
 
+    private Text word;
+    private IntWritable count;
+
     public WordKey() {
         super();
     }
@@ -20,8 +23,11 @@ public class WordKey implements WritableComparable<WordKey> {
         this.count = count;
     }
 
-    private Text word;
-    private IntWritable count;
+    @Override
+    public int compareTo(WordKey wordKey) {
+        int compare = count.compareTo(wordKey.count);
+        return compare != 0 ? -compare : -word.compareTo(wordKey.word);
+    }
 
     public Text getWord() {
         return word;
@@ -31,11 +37,7 @@ public class WordKey implements WritableComparable<WordKey> {
         return count;
     }
 
-    @Override
-    public int compareTo(WordKey wordKey) {
-        int compare = count.compareTo(wordKey.count);
-        return compare != 0 ? -compare : -word.compareTo(wordKey.word);
-    }
+
 
     @Override
     public void write(DataOutput dataOutput) throws IOException {

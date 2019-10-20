@@ -14,7 +14,6 @@ public class WordMapper extends Mapper<Object, Text, Text, IntWritable> {
     private final Map<String, Integer> wordMap = new HashMap<>();  // store intermediate result here in-memory
 
     public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-
         StringTokenizer tokenizer = new StringTokenizer(value.toString());
         String token = "";
         while (tokenizer.hasMoreTokens()) {
